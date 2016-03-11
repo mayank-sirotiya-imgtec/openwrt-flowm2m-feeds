@@ -1,0 +1,26 @@
+#!/bin/sh /etc/rc.common
+
+START=99
+STOP=10
+
+SERVICE_DAEMONIZE=1
+SERVICE_WRITE_PID=1
+
+APP=flow_device_manager_ubusd
+LOGFILE=/var/log/$APP
+DEBUG_LEVEL=5
+
+EXTRA_COMMANDS="debug"
+EXTRA_HELP="	debug   Start the service in debug mode"
+
+start() {
+	service_start /usr/bin/$APP -l $LOGFILE
+}
+
+stop() {
+	service_stop /usr/bin/$APP
+}
+
+debug() {
+	service_start /usr/bin/$APP -l $LOGFILE -v $DEBUG_LEVEL
+}
