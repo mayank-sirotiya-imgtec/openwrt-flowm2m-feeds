@@ -22,7 +22,7 @@ include $(INCLUDE_DIR)/cmake.mk
 define Package/flow_button_gateway
   SECTION:=utils
   CATEGORY:=Utilities
-  DEPENDS:= +awalwm2m +libflowmessaging +libflowcore +libconfig
+  DEPENDS:= +awalwm2m +libflow +libconfig
   TITLE:=Flow button gateway app
 endef
 
