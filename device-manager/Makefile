@@ -1,12 +1,12 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=flow_device_manager
+PKG_NAME:=device-manager
 PKG_VERSION:=dev
 PKG_RELEASE:=1
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
 
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/CreatorKit/flow_device_manager.git
+PKG_SOURCE_URL:=https://github.com/CreatorKit/device-manager.git
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_VERSION:=$(PKG_VERSION)
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
@@ -17,18 +17,17 @@ include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
 
 
-define Package/flow_device_manager
+define Package/device-manager
   SECTION:=utils
   CATEGORY:=Utilities
   DEFAULT:=n
   DEPENDS:=+awalwm2m +ubus +ubox
-  TITLE:=Flow device manager
+  TITLE:=Device manager
   MENU:=1
 endef
 
-define Package/flow_device_manager/description
- Flow device manager consists of library and application for provisioning device for flow cloud
- access and 6lowpan onboarding.
+define Package/device-manager/description
+ Device manager is an application for provisioning devices with access details for flow cloud
 endef
 
 CMAKE_OPTIONS += -DSTAGING_DIR=$(STAGING_DIR)
@@ -41,7 +40,7 @@ define Build/Clean
 	$(call Build/Compile/Default,clean)
 endef
 
-define Package/flow_device_manager/install
+define Package/device-manager/install
 	$(INSTALL_DIR) $(1)/usr/lib/
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/lib/* $(1)/usr/lib/
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/lib/* $(STAGING_DIR)/usr/lib/
@@ -51,4 +50,4 @@ define Package/flow_device_manager/install
 	$(INSTALL_BIN) ./files/* $(1)/etc/init.d/
 endef
 
-$(eval $(call BuildPackage,flow_device_manager))
+$(eval $(call BuildPackage,device-manager))

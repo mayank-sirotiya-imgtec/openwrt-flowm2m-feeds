@@ -6,7 +6,7 @@ STOP=10
 SERVICE_DAEMONIZE=1
 SERVICE_WRITE_PID=1
 
-APP=flow_device_manager_ubusd
+APP=device_manager_ubusd
 LOGFILE=/var/log/$APP
 DEBUG_LEVEL=5
 
