@@ -6,10 +6,12 @@ SERVICE_PID_FILE=/var/run/awa_clientd.pid
 BINARY=/bin/awa_clientd
 LOGFILE=/var/log/awa_clientd
 
-#include global settings
-. /etc/config/awalwm2m
+apply_global_settings() {
+	. /etc/config/awalwm2m
+}
 
 start() {
+	apply_global_settings
 	start-stop-daemon -m -S -p $SERVICE_PID_FILE -b -x $BINARY -- -l $LOGFILE --bootstrap $BOOTSTRAP $VERBOSE
 }
 
